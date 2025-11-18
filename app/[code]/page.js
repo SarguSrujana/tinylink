@@ -1,0 +1,1 @@
+import{query}from '@/lib/db';import{NextResponse}from 'next/server';export async function GET(req,{params}){const r=await query("SELECT url FROM links WHERE code=$1",[params.code]);if(!r.rowCount)return new Response("Not Found",{status:404});query("UPDATE links SET clicks=clicks+1,last_clicked=now() WHERE code=$1",[params.code]);return NextResponse.redirect(r.rows[0].url,302);}
