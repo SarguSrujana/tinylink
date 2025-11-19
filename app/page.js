@@ -1,1 +1,8 @@
-import LinkForm from '@/components/LinkForm';import LinksTable from '@/components/LinksTable';import {query} from '@/lib/db';export default async function Home(){const links=(await query("SELECT * FROM links ORDER BY created_at DESC")).rows;return(<main className='p-6 max-w-4xl mx-auto'><h1 className='text-3xl font-bold mb-6'>TinyLink</h1><LinkForm/><div className='mt-8'><LinksTable links={links}/></div></main>);}
+export default function Home() {
+  return (
+    <main>
+      <h1>TinyLink</h1>
+      <p>URL Shortener Working!</p>
+    </main>
+  );
+}
